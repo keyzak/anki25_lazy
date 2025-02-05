@@ -5,14 +5,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import csv
-from config import EMAIL, PASSW
+import config
 
-# Credentials
+
+# Credentials (loaded from config.py)
+EMAIL = config.EMAIL
+PASSW = config.PASSW
+DECK_NAME = config.DECK_NAME  # Use the deck name from config.py
+
+
+
 
 
 # Website URL
 LOGIN_URL = 'https://ankiweb.net/account/login'
-DECK_NAME = 'Google_translator_06_23'  # Adjust this if needed
+
 
 # Initialize Chrome WebDriver
 options = webdriver.ChromeOptions()
@@ -38,6 +45,7 @@ def login():
     time.sleep(3)  # Wait for login
 
 
+#----------------------
 def open_deck():
     """Opens the specified Anki deck."""
     try:
@@ -49,6 +57,11 @@ def open_deck():
         print(f"Error opening deck: {e}")
         driver.quit()
         exit()
+
+#------------------------
+
+
+
 
 
 def press_button(button_text):
@@ -115,7 +128,7 @@ def process_cards():
 
 def save_to_csv(words):
     """Saves words to a CSV file."""
-    with open('mojalista.csv', 'w', newline='', encoding='utf-8') as file:
+    with open('mylist.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(["Words"])  # Header
         writer.writerows([[word] for word in words])
