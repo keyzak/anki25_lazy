@@ -8,8 +8,7 @@ import csv
 from config import EMAIL, PASSW
 
 # Credentials
-# EMAIL = 'kejzak69@gmail.com'
-# PASSW = '2mikolaj2'
+
 
 # Website URL
 LOGIN_URL = 'https://ankiweb.net/account/login'
